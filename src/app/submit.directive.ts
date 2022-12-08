@@ -22,7 +22,7 @@ export class SubmitDirective {
 
   @HostListener('click')
   submit() {
-    console.log('click acknowledged');
+    console.log('click acknowledged at directive');
     const elem = document.querySelector('form');
     if (elem) {
       // (this.el.nativeElement as HTMLElement).setAttribute('form', elem.id);

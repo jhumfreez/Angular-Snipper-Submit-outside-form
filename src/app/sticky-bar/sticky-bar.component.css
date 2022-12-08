@@ -6,7 +6,28 @@
   bottom: 0;
 }
 
-.btn-submit {
+button {
+  margin: 5px;
+  border-radius: 5px;
+}
+
+button:hover {
+  filter: brightness(90%);
+}
+
+.btn-container{
   position: absolute;
-  right: 20px;  
+  right: 20px;
+}
+
+button.btn-submit {
+  background-color: gold;
+}
+
+button.btn-previous {
+  background-color: white;
+}
+
+button.btn-advance {
+  background-color: cyan;
 }

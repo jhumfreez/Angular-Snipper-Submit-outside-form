@@ -1,5 +1,13 @@
 <div class="bar">
-  <button type="submit" class="btn-submit" appSubmit>
-    Submit
-  </button>
+  <div class="btn-container">
+    <button class="btn-previous">Previous</button>
+    <ng-container *ngIf="true; then advance; else submit"></ng-container>
+  </div>
 </div>
+
+<ng-template #advance>
+  <button class="btn-advance">Advance</button>
+</ng-template>
+<ng-template #submit>
+  <button type="submit" class="btn-submit" appSubmit>Submit</button>
+</ng-template>

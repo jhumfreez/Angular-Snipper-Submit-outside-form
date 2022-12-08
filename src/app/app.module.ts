@@ -9,25 +9,28 @@ import { StickyBarComponent } from './sticky-bar/sticky-bar.component';
 import { SubmitDirective } from './submit.directive';
 import { TestDirective } from './test.directive';
 import { RouterModule, Routes } from '@angular/router';
+import { TaskType } from './types';
 
 const routes: Routes = [
   {
     path: '',
     children: [
       {
-        path: '',
+        path: 'page-1',
         component: ExampleComponent,
+        data: { taskType: TaskType.PAGE_ONE }
+      },
+      {
+        path: 'page-2',
+        component: ExampleComponent,
+        data: { taskType: TaskType.PAGE_TWO }
       },
     ],
   },
 ];
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    //  RouterModule.forRoot(routes)
-  ],
+  imports: [BrowserModule, ReactiveFormsModule, RouterModule.forRoot(routes)],
   declarations: [
     AppComponent,
     HelloComponent,
