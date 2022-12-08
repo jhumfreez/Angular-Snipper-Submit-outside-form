@@ -22,7 +22,7 @@ export class ExampleComponent implements OnInit {
     this.myForm = fb.group({
       name: fb.control('', [Validators.required]),
       dob: fb.control(new Date()),
-      id: fb.control('', [Validators.minLength(3)]),
+      id: fb.control('', [Validators.required]),
     });
     this.submitForm = new EventEmitter<SubmissionContent>();
   }

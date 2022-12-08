@@ -23,11 +23,19 @@ export class StickyBarComponent implements OnInit {
   }
 
   advance() {
-    this.router.navigate([TaskType.PAGE_TWO]);
-    this.navBtnService.advance();
+    this.router.navigate([this.getNextTake()]);
+    this.navBtnService.advance(this.getNextTake());
   }
 
   previous() {
-    this.router.navigate([TaskType.PAGE_ONE]);
+    this.router.navigate([this.getNextTake()]);
+    this.navBtnService.advance(this.getNextTake());
+  }
+
+  // For demo
+  private getNextTake() {
+    return this.navBtnService.currentTask === TaskType.PAGE_ONE
+      ? TaskType.PAGE_TWO
+      : TaskType.PAGE_ONE;
   }
 }
