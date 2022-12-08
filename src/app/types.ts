@@ -11,4 +11,7 @@ export enum TaskType {
 export interface ButtonState {
   isSubmit: boolean;
   disabled: boolean;
+  hidden?: boolean;
 }
+
+export type PrevButtonState = Required<Omit<ButtonState, 'isSubmit'>>;

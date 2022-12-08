@@ -1,17 +1,25 @@
 import { Injectable } from '@angular/core';
-import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ButtonState, TaskType } from './types';
+import { ButtonState, TaskType, PrevButtonState } from './types';
 
 @Injectable({ providedIn: 'root' })
 export class NavButtonStateService {
   prevTask: TaskType;
   currentTask: TaskType;
+
   advanceButtonState: ButtonState;
-  _state$: BehaviorSubject<ButtonState>;
-  get state$(): Observable<ButtonState> {
-    return this._state$ as Observable<ButtonState>;
+  _advState$: BehaviorSubject<ButtonState>;
+  get advState$(): Observable<ButtonState> {
+    return this._advState$ as Observable<ButtonState>;
   }
+
+  prevButtonState: PrevButtonState;
+  _prevState$: BehaviorSubject<PrevButtonState>;
+  get prevState$(): Observable<PrevButtonState> {
+    return this._prevState$ as Observable<PrevButtonState>;
+  }
+
   constructor(router: Router) {
     router.events.subscribe((navEvent) => {
       if (navEvent instanceof NavigationStart) {
@@ -22,8 +30,12 @@ export class NavButtonStateService {
       }
     });
     this.currentTask = TaskType.PAGE_ONE;
-    this._state$ = new BehaviorSubject<ButtonState>({
+    this._advState$ = new BehaviorSubject<ButtonState>({
       isSubmit: false,
+      disabled: false,
+    });
+    this._prevState$ = new BehaviorSubject<PrevButtonState>({
+      hidden: true,
       disabled: false,
     });
   }
@@ -31,14 +43,18 @@ export class NavButtonStateService {
   advance(nextTask: TaskType) {
     switch (nextTask) {
       case TaskType.PAGE_ONE:
-        this.updateNavButtonState({
+        this.assignAdvState({
           isSubmit: false,
           disabled: false,
+        });
+        this.assignPrevState({
+          disabled: false,
+          hidden: true,
         });
         // console.log('handling advance task for', TaskType.PAGE_ONE);
         break;
       case TaskType.PAGE_TWO:
-        this.updateNavButtonState({
+        this.assignAdvState({
           isSubmit: true,
           disabled: false,
         });
@@ -55,8 +71,13 @@ export class NavButtonStateService {
     this.currentTask = nextTask;
   }
 
-  private updateNavButtonState(state: ButtonState) {
-    this.advanceButtonState = state;
-    this._state$.next(state);
+  private assignAdvState(advState: ButtonState) {
+    this.advanceButtonState = advState;
+    this._advState$.next(advState);
+  }
+
+  private assignPrevState(prevState: PrevButtonState) {
+    this.prevButtonState = prevState;
+    this._prevState$.next(prevState);
   }
 }

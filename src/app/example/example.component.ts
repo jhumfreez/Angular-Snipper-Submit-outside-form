@@ -30,7 +30,10 @@ export class ExampleComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    console.log('form submit locally acknowledged', this.myForm.value);
+    console.log(
+      '[Confirmation] form submit locally acknowledged',
+      this.myForm.value
+    );
     // Not used at the moment.
     this.submitForm.emit(this.myForm.value);
   }

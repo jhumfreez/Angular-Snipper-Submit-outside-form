@@ -1,9 +1,15 @@
 <div class="bar">
   <div class="btn-container">
-    <button class="btn-previous" (click)="previous()">Previous</button>
+    <button
+      *ngIf="!(navBtnService.prevState$ | async).hidden"
+      class="btn-previous"
+      (click)="previous()"
+    >
+      Previous
+    </button>
     <ng-container
       *ngIf="
-        !((navBtnService.state$ | async).isSubmit);
+        !(navBtnService.advState$ | async).isSubmit;
         then advanceBtn;
         else submitBtn
       "
