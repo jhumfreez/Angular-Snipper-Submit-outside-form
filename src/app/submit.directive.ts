@@ -8,7 +8,7 @@ export class SubmitDirective {
    * Q: What's happening?
    * A: This direct applies to buttons of type "Submit". Natively, the submit button is associated
    * with a form with a matching id. So, before the submit event occurs, the id is assigned to
-   * the first form on the page.
+   * the first form on the page. See console output.
    */
 
   @HostListener('click')
