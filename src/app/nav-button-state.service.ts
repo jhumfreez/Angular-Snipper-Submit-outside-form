@@ -58,6 +58,10 @@ export class NavButtonStateService {
           isSubmit: true,
           disabled: false,
         });
+        this.assignPrevState({
+          disabled: false,
+          hidden: false,
+        });
         // console.log('handling advance task for', TaskType.PAGE_TWO);
         break;
       default:
