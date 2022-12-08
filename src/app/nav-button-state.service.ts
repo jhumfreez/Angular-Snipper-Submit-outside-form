@@ -8,16 +8,18 @@ export class NavButtonStateService {
     this.currentTask = TaskType.PAGE_ONE;
   }
 
-  advance(){
-    switch(this.currentTask){
+  advance() {
+    switch (this.currentTask) {
       case TaskType.PAGE_ONE:
+        console.log('handling advance task for', TaskType.PAGE_ONE);
         break;
       case TaskType.PAGE_TWO:
+        console.log('handling advance task for', TaskType.PAGE_TWO);
         break;
     }
   }
 
-  updateNavButtonState(){
+  updateNavButtonState() {
     return;
   }
 
