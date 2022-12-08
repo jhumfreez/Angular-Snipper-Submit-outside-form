@@ -18,9 +18,5 @@ export class SubmitDirective {
     (this.el.nativeElement as HTMLElement).setAttribute('form', elem.id);
   }
 
-  // @HostListener('submit', ['$event'])
-  // test(event: SubmitEvent) {
-  //   console.log('submit acknowledged', event);
-  // }
   constructor(private el: ElementRef) {}
 }

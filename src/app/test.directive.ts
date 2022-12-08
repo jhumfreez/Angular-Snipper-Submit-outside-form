@@ -1,5 +1,9 @@
 import { Directive, ElementRef, HostListener } from '@angular/core';
 
+/**
+ * This is just for demo purposes
+ */
+
 @Directive({
   selector: '[appTest]',
 })
