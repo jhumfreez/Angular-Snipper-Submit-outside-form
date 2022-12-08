@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ButtonState, TaskType } from './types';
 
@@ -11,7 +12,15 @@ export class NavButtonStateService {
   get state$(): Observable<ButtonState> {
     return this._state$ as Observable<ButtonState>;
   }
-  constructor() {
+  constructor(router: Router) {
+    router.events.subscribe((navEvent) => {
+      if (navEvent instanceof NavigationStart) {
+        const task = router.routerState.root.data['taskType'];
+        if (task) {
+          this.advance(task);
+        }
+      }
+    });
     this.currentTask = TaskType.PAGE_ONE;
     this._state$ = new BehaviorSubject<ButtonState>({
       isSubmit: false,
@@ -20,7 +29,7 @@ export class NavButtonStateService {
   }
 
   advance(nextTask: TaskType) {
-    switch (this.currentTask) {
+    switch (nextTask) {
       case TaskType.PAGE_ONE:
         this.updateNavButtonState({
           isSubmit: false,
@@ -29,18 +38,15 @@ export class NavButtonStateService {
         // console.log('handling advance task for', TaskType.PAGE_ONE);
         break;
       case TaskType.PAGE_TWO:
-        console.log('test');
         this.updateNavButtonState({
           isSubmit: true,
           disabled: false,
         });
         // console.log('handling advance task for', TaskType.PAGE_TWO);
         break;
+      default:
+        return;
     }
-    this.cycleTasks(nextTask);
-  }
-
-  previous(nextTask: TaskType) {
     this.cycleTasks(nextTask);
   }
 
@@ -53,9 +59,4 @@ export class NavButtonStateService {
     this.advanceButtonState = state;
     this._state$.next(state);
   }
-
-  // Simplifying task-assignment/router-relationship for demo purposes
-  // updateTask(newTask: TaskType) {
-  //   this.currentTask = newTask;
-  // }
 }

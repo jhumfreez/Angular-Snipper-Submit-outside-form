@@ -14,13 +14,7 @@ export class StickyBarComponent implements OnInit {
     public navBtnService: NavButtonStateService
   ) {}
 
-  ngOnInit() {
-    // this.router.events.subscribe((navEvent) => {
-    //   if (navEvent instanceof NavigationEnd) {
-    //     this.navBtnService.updateNavButtonState();
-    //   }
-    // });
-  }
+  ngOnInit() {}
 
   advance() {
     this.router.navigate([this.getNextTake()]);
@@ -28,8 +22,9 @@ export class StickyBarComponent implements OnInit {
   }
 
   previous() {
-    this.router.navigate([this.getNextTake()]);
-    this.navBtnService.advance(this.getNextTake());
+    this.advance();
+    // this.router.navigate([this.getNextTake()]);
+    // this.navBtnService.advance(this.getNextTake());
   }
 
   // For demo
