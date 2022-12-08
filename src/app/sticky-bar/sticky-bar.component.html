@@ -3,7 +3,7 @@
     <button class="btn-previous" (click)="previous()">Previous</button>
     <ng-container
       *ngIf="
-        (navBtnService.state$ | async).isSubmit;
+        !(navBtnService.state$ | async).isSubmit;
         then advanceBtn;
         else submitBtn
       "
