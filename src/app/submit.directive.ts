@@ -12,11 +12,11 @@ export class SubmitDirective {
    * So, one option is to match the button id to the form. This is probably
    * super unclear though.
    * An alternative is getting the form element and call the native requestSubmit
-   * 
+   *
    * resoures:
    * - https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/requestSubmit
    * - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes
-   * 
+   *
    * See console output.
    */
 

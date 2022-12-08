@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { NavButtonStateService } from '../nav-button-state.service';
+import { TaskType } from '../types';
 
 @Component({
   selector: 'app-sticky-bar',
@@ -19,6 +20,10 @@ export class StickyBarComponent implements OnInit {
   }
 
   advance(){
-    this.router.navigate(['page-2']);
+    this.router.navigate([TaskType.PAGE_ONE]);
+  }
+
+  previous(){
+    this.router.navigate([TaskType.PAGE_TWO]);
   }
 }

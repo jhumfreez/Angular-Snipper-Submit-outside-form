@@ -4,6 +4,6 @@ export interface SubmissionContent {
 }
 
 export enum TaskType {
-  PAGE_ONE,
-  PAGE_TWO,
+  PAGE_ONE = 'page-1',
+  PAGE_TWO = 'page-2',
 }

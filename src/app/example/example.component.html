@@ -1,8 +1,27 @@
-<form [formGroup]="myForm" (submit)="onSubmit()" id="my-form" appTest>
-  <label>Enter your name: </label>
-  <input formControlName="name">
-  <br>
-  <label>Enter your DOB: </label>
-  <input type="date" formControlName="dob">
-  <!-- <button>test</button> -->
-</form>
+<ng-container *ngIf="!showAltForm; then pageOne; else pageTwo"></ng-container>
+
+<ng-template #pageOne>
+  <form
+    [formGroup]="myForm"
+    (submit)="onSubmit()"
+    [id]="showAltForm ? 'form-1' : 'form-2'"
+    appTest
+  >
+    <label>Enter your name: </label>
+    <input formControlName="name" />
+    <br />
+    <label>Enter your DOB: </label>
+    <input type="date" formControlName="dob" />
+  </form>
+</ng-template>
+<ng-template #pageTwo>
+  <form
+    [formGroup]="myForm"
+    (submit)="onSubmit()"
+    [id]="showAltForm ? 'form-1' : 'form-2'"
+    appTest
+  >
+    <label>Enter your ID: </label>
+    <input formControlName="id" />
+  </form>
+</ng-template>
