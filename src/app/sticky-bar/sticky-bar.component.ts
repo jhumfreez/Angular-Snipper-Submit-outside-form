@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { NavButtonStateService } from '../nav-button-state.service';
 import { TaskType } from '../types';
 
@@ -18,13 +18,12 @@ export class StickyBarComponent implements OnInit {
 
   advance() {
     this.router.navigate([this.getNextTake()]);
+    // FIXME: Shouldn't need this
     this.navBtnService.advance(this.getNextTake());
   }
 
   previous() {
     this.advance();
-    // this.router.navigate([this.getNextTake()]);
-    // this.navBtnService.advance(this.getNextTake());
   }
 
   // For demo
