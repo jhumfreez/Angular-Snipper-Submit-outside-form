@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
@@ -8,6 +8,16 @@ import { ExampleComponent } from './example/example.component';
 import { StickyBarComponent } from './sticky-bar/sticky-bar.component';
 import { SubmitDirective } from './submit.directive';
 import { TestDirective } from './test.directive';
+import { Route } from '@angular/router';
+import { SubmitterDirective } from './submitter.directive';
+
+const routes: Route[] = [
+  {
+    path: '',
+    component: AppComponent,
+    // children
+  },
+];
 
 @NgModule({
   imports: [BrowserModule, ReactiveFormsModule],
@@ -17,7 +27,7 @@ import { TestDirective } from './test.directive';
     ExampleComponent,
     StickyBarComponent,
     SubmitDirective,
-    TestDirective,
+    TestDirective,SubmitterDirective
   ],
   bootstrap: [AppComponent],
 })
