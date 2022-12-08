@@ -1,0 +1,12 @@
+.bar {
+  padding: 10px 0;
+  min-height: 30px;
+  background-color: rgb(157, 157, 245);
+  position: sticky;
+  bottom: 0;
+}
+
+.btn-submit {
+  position: absolute;
+  right: 20px;  
+}

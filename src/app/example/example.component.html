@@ -1,0 +1,8 @@
+<form [formGroup]="myForm" (submit)="onSubmit()" id="my-form" appTest>
+  <label>Enter your name: </label>
+  <input formControlName="name">
+  <br>
+  <label>Enter your DOB: </label>
+  <input type="date" formControlName="dob">
+  <!-- <button>test</button> -->
+</form>
