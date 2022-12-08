@@ -43,25 +43,11 @@ export class NavButtonStateService {
   advance(nextTask: TaskType) {
     switch (nextTask) {
       case TaskType.PAGE_ONE:
-        this.assignAdvState({
-          isSubmit: false,
-          disabled: false,
-        });
-        this.assignPrevState({
-          disabled: false,
-          hidden: true,
-        });
+        this.setupPageOne();
         // console.log('handling advance task for', TaskType.PAGE_ONE);
         break;
       case TaskType.PAGE_TWO:
-        this.assignAdvState({
-          isSubmit: true,
-          disabled: false,
-        });
-        this.assignPrevState({
-          disabled: false,
-          hidden: false,
-        });
+        this.setupPageTwo();
         // console.log('handling advance task for', TaskType.PAGE_TWO);
         break;
       default:
@@ -70,9 +56,40 @@ export class NavButtonStateService {
     this.cycleTasks(nextTask);
   }
 
+  private setupPageOne() {
+    this.setNextState(
+      {
+        isSubmit: false,
+        disabled: false,
+      },
+      {
+        disabled: false,
+        hidden: true,
+      }
+    );
+  }
+
+  private setupPageTwo() {
+    this.setNextState(
+      {
+        isSubmit: true,
+        disabled: false,
+      },
+      {
+        disabled: false,
+        hidden: false,
+      }
+    );
+  }
+
   private cycleTasks(nextTask: TaskType) {
     this.prevTask = this.currentTask;
     this.currentTask = nextTask;
+  }
+
+  private setNextState(advState: ButtonState, prevState: PrevButtonState) {
+    this.assignAdvState(advState);
+    this.assignPrevState(prevState);
   }
 
   private assignAdvState(advState: ButtonState) {
