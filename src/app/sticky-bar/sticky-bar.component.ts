@@ -11,15 +11,15 @@ import { TaskType } from '../types';
 export class StickyBarComponent implements OnInit {
   constructor(
     private router: Router,
-    private navBtnService: NavButtonStateService
+    public navBtnService: NavButtonStateService
   ) {}
 
   ngOnInit() {
-    this.router.events.subscribe((navEvent) => {
-      if (navEvent instanceof NavigationEnd) {
-        this.navBtnService.updateNavButtonState();
-      }
-    });
+    // this.router.events.subscribe((navEvent) => {
+    //   if (navEvent instanceof NavigationEnd) {
+    //     this.navBtnService.updateNavButtonState();
+    //   }
+    // });
   }
 
   advance() {
