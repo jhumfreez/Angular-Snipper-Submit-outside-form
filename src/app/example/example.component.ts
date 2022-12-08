@@ -12,8 +12,8 @@ export class ExampleComponent implements OnInit {
   @Output() submitForm: EventEmitter<SubmissionContent>;
 
   myForm: FormGroup;
-  constructor(fb: FormBuilder, route: ActivatedRouteSnapshot) {
-    console.log(route.data.taskType);
+  constructor(fb: FormBuilder, route: ActivatedRoute) {
+    console.log(route.snapshot.data.taskType);
     this.myForm = fb.group({
       name: fb.control('', [Validators.required]),
       dob: fb.control(new Date()),

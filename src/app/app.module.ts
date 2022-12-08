@@ -18,12 +18,16 @@ const routes: Routes = [
       {
         path: 'page-1',
         component: ExampleComponent,
-        data: { taskType: TaskType.PAGE_ONE }
+        data: { taskType: TaskType.PAGE_ONE },
       },
       {
         path: 'page-2',
         component: ExampleComponent,
-        data: { taskType: TaskType.PAGE_TWO }
+        data: { taskType: TaskType.PAGE_TWO },
+      },
+      {
+        path: '**',
+        redirectTo: 'page-1',
       },
     ],
   },
