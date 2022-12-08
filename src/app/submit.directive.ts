@@ -9,7 +9,7 @@ export class SubmitDirective {
    * A: This direct applies to buttons of type "Submit". Natively, the submit button is
    * associated with a form with a matching id.
    *
-   * So, one option is to match the button id to the form.
+   * So, one option is to match the button id to the form before submit is registered.
    * This is probably super unclear though (and may depend on browser implementation).
    * 
    * An alternative is getting the form element and call the native requestSubmit
