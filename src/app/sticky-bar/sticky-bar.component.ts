@@ -17,7 +17,7 @@ export class StickyBarComponent implements OnInit {
   ngOnInit() {}
 
   advance() {
-    this.router.navigate([this.getNextTake()]);
+    this.router.navigate([this.getNextTask()]);
     // FIXME: Shouldn't need this
     // this.navBtnService.advance(this.getNextTake());
   }
@@ -27,7 +27,7 @@ export class StickyBarComponent implements OnInit {
   }
 
   // For demo
-  private getNextTake() {
+  private getNextTask() {
     return this.navBtnService.currentTask === TaskType.PAGE_ONE
       ? TaskType.PAGE_TWO
       : TaskType.PAGE_ONE;
