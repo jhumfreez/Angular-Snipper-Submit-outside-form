@@ -40,8 +40,9 @@ export class ExampleComponent implements OnInit {
 
   // #region demo stuff
   adjustForm() {
-    const currentTask = this.route.snapshot.data.taskType;
-    this.showAltForm = currentTask === TaskType.PAGE_TWO;
+    this.route.data.subscribe((d) => {
+      this.showAltForm = d.taskType === TaskType.PAGE_TWO;
+    });
   }
   // #endregion demo stuff
 }
