@@ -19,7 +19,7 @@ export class StickyBarComponent implements OnInit {
   advance() {
     this.router.navigate([this.getNextTask()]);
     // FIXME: Shouldn't need this
-    // this.navBtnService.advance(this.getNextTake());
+    this.navBtnService.advance(this.getNextTask());
   }
 
   previous() {
