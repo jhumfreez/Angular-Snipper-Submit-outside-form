@@ -8,7 +8,7 @@ import { SubmissionContent, TaskType } from '../types';
   templateUrl: './example.component.html',
   styleUrls: ['./example.component.css'],
 })
-export class ExampleComponent implements OnInit {
+export class ExampleComponent {
   @Output() submitForm: EventEmitter<SubmissionContent>;
 
   // Re-used the form across pages out of laziness
@@ -26,8 +26,6 @@ export class ExampleComponent implements OnInit {
     });
     this.submitForm = new EventEmitter<SubmissionContent>();
   }
-
-  ngOnInit() {}
 
   onSubmit() {
     console.log(

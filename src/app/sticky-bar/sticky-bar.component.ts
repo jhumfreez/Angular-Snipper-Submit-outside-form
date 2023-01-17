@@ -8,13 +8,11 @@ import { TaskType } from '../types';
   templateUrl: './sticky-bar.component.html',
   styleUrls: ['./sticky-bar.component.css'],
 })
-export class StickyBarComponent implements OnInit {
+export class StickyBarComponent {
   constructor(
     private router: Router,
     public navBtnService: NavButtonStateService
   ) {}
-
-  ngOnInit() {}
 
   advance() {
     this.router.navigate([this.getNextTask()]);
