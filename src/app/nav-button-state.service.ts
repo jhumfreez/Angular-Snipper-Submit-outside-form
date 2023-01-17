@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ButtonState, TaskType, PrevButtonState } from './types';
 
@@ -22,6 +22,10 @@ export class NavButtonStateService {
 
   constructor(router: Router) {
     router.events.subscribe((navEvent) => {
+      // if(navEvent instanceof NavigationEnd){
+      //   console.log('data:',router.routerState.root.data)
+      // }
+      // TODO: Call advance at a more appropriate step
       if (navEvent instanceof NavigationStart) {
         const task = router.routerState.root.data['taskType'];
         if (task) {

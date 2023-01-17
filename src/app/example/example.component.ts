@@ -1,6 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import {
+  ActivatedRoute,
+  ActivatedRouteSnapshot,
+  Router,
+} from '@angular/router';
+import { NavButtonStateService } from '../nav-button-state.service';
 import { SubmissionContent, TaskType } from '../types';
 
 @Component({
@@ -15,7 +20,12 @@ export class ExampleComponent {
   showAltForm = false;
 
   myForm: FormGroup;
-  constructor(fb: FormBuilder, private route: ActivatedRoute) {
+  constructor(
+    fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private navBtnService: NavButtonStateService
+  ) {
     // This is just for re-using the form (and to show something kinda neat about route data)
     this.adjustForm();
 
@@ -34,6 +44,16 @@ export class ExampleComponent {
     );
     // Not used at the moment.
     this.submitForm.emit(this.myForm.value);
+    // FIXME: Should be navigating relative to activated route
+    // console.log('next task:', this.getNextTask());
+    // this.router.navigate([this.getNextTask()]);
+  }
+
+  // For demo
+  private getNextTask() {
+    return this.navBtnService.currentTask === TaskType.PAGE_ONE
+      ? TaskType.PAGE_TWO
+      : TaskType.PAGE_ONE;
   }
 
   // #region demo stuff

@@ -24,7 +24,7 @@ export class StickyBarComponent {
     this.advance();
   }
 
-  // For demo
+  // // For demo
   private getNextTask() {
     return this.navBtnService.currentTask === TaskType.PAGE_ONE
       ? TaskType.PAGE_TWO
